@@ -130,9 +130,9 @@ The run the `okidoki generate` command again and refresh your browser to see the
 
 ## Getting Started with Your Documentation Site
 
-- **Advanced Configuration**: Explore the [complete documentation reference](https://okidoki.dev/reference.html) for custom themes, search optimization, and advanced features
-- **Documentation Examples**: Browse [real-world Markdown examples](https://okidoki.dev/markdown-examples.html) and templates for API docs, tutorials, and guides
-- **Support & Troubleshooting**: Visit our [comprehensive help guide](https://okidoki.dev/help.html) or [GitHub Issues](https://github.com/jbeejones/okidoki/issues) for community support
+- **Advanced Configuration**: Explore the [complete documentation reference](https://okidoki.dev/reference) for custom themes, search optimization, and advanced features
+- **Documentation Examples**: Browse [real-world Markdown examples](https://okidoki.dev/markdown-examples) and templates for API docs, tutorials, and guides
+- **Support & Troubleshooting**: Visit our [comprehensive help guide](https://okidoki.dev/help) or [GitHub Issues](https://github.com/jbeejones/okidoki/issues) for community support
 
 ## Why Choose OkiDoki for API Documentation?
 
