@@ -13,7 +13,7 @@
     "generate": "node src/index.js generate",
     "start": "npx serve dist",
     "dev": "nodemon -w ./docs -e md,png,jpg,jpeg,gif,svg,webp --exec \"npm run generate\"",
-    "dev:serve": "npm run generate && concurrently \"nodemon -w ./docs -e md,png,jpg,jpeg,gif,svg,webp --exec 'npm run generate'\" \"npx serve dist\"",
+    "dev:serve": "npm run generate && concurrently \"nodemon -w ./docs -e md,png,jpg,jpeg,gif,svg,webp --exec npm run generate\" \"npx serve dist\"",
     "pub_to_npm": "npm version patch -m \"chore(release): %s\" && npm publish"
   },
   "repository": {
