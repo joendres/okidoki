@@ -1,101 +1,49 @@
 {{#extend "layout"}}
-{{#content "main"}}
-{{#if layout.customHTML}}
-<!-- Custom HTML layout - no prose constraints -->
-{{{html}}}
-{{else}}
-{{#if (and layout.hideMenu layout.hideFooter)}}
-<!-- Full-screen hero layout - no padding or margins -->
-{{{html}}}
-{{else}}
-<!-- Standard page layout -->
-{{#unless layout.hideBreadcrumbs}}
-<div class="breadcrumbs text-sm pl-4 mt-4 lg:mt-4">
-  <ul>
-    <li><a
-        href="{{#if settings.site.friendlyUrl}}{{baseUrl}}{{else}}{{joinUrl baseUrl (transformUrl 'index.html' settings)}}{{/if}}">{{#if
-        props.label_home}}{{props.label_home}}{{else}}Home{{/if}}</a></li>
-    {{#each breadcrumbs}}
-    <li>{{this}}</li>
-    {{/each}}
-  </ul>
-</div>
-{{/unless}}
-
-{{#if layout.pagenav}}
-<!-- Mobile dropdown navigation -->
-{{#if pageNavigation}}
-<div class="lg:hidden mb-4 relative z-40">
-  <div class="dropdown dropdown-bottom w-full">
-    <div tabindex="0" role="button" class="btn btn-outline w-full justify-between">
-      <span class="text-sm font-semibold uppercase tracking-wide">{{#if
-        props.label_pagenav}}{{props.label_pagenav}}{{else}}On this page{{/if}}</span>
-      <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-      </svg>
+{{#content "main"}}  
+    {{#if layout.customHTML}}
+    <!-- Custom HTML layout - no prose constraints -->
+    {{{html}}}
+    {{else}}
+    {{#if (and layout.hideMenu layout.hideFooter)}}
+    <!-- Full-screen hero layout - no padding or margins -->
+    {{{html}}}
+    {{else}}
+    <!-- Standard page layout -->
+    {{#unless layout.hideBreadcrumbs}}
+    <div class="breadcrumbs text-sm pl-4 mt-4 lg:mt-4">
+      <ul>
+        <li><a href="{{#if settings.site.friendlyUrl}}{{baseUrl}}{{else}}{{joinUrl baseUrl (transformUrl 'index.html' settings)}}{{/if}}">{{#if props.label_home}}{{props.label_home}}{{else}}Home{{/if}}</a></li>
+        {{#each breadcrumbs}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
     </div>
-    <ul tabindex="0"
-      class="dropdown-content menu menu-sm bg-base-100 border border-base-300 rounded-lg shadow-lg w-full mt-1 p-2 z-[50]">
-      {{#each pageNavigation}}
-      <li class="whitespace-nowrap overflow-hidden">
-        <a href="#{{this.slug}}" class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a>
-        {{#if this.children}}
-        <ul>
-          {{#each this.children}}
-          <li class="whitespace-nowrap overflow-hidden">
-            <a href="#{{this.slug}}" class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a>
-            {{#if this.children}}
-            <ul>
-              {{#each this.children}}
-              <li class="whitespace-nowrap overflow-hidden"><a href="#{{this.slug}}"
-                  class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a></li>
-              {{/each}}
-            </ul>
-            {{/if}}
-          </li>
-          {{/each}}
-        </ul>
-        {{/if}}
-      </li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
-{{/if}}
-
-<!-- Content with navigation -->
-<div class="flex flex-col lg:flex-row lg:gap-6 min-w-0">
-  <div class="flex-1 order-2 lg:order-1 min-w-0 overflow-hidden">
-    <div
-      class="prose dark:prose-invert {{#if layout.fullWidth}}!max-w-none{{else}}!max-w-[920px]{{/if}} p-1 lg:m-1 prose-td:[&[align=right]]:text-right prose-td:[&[align=center]]:text-center prose-th:[&[align=right]]:text-right prose-th:[&[align=center]]:text-center">
-      {{{html}}}
-    </div>
-  </div>
-
-  {{#if pageNavigation}}
-  <div class="order-1 lg:order-2 lg:w-64 lg:flex-shrink-0 hidden lg:block">
-    <div class="fixed top-20 right-4 w-60 h-[calc(100vh-6rem)] bg-base-100 border-l border-base-300 shadow-sm z-10">
-      <div class="p-4">
-        <div class="pb-3 border-b border-base-300 mb-4">
-          <h3 class="text-sm font-semibold text-base-content mb-0 uppercase tracking-wide">{{#if
-            props.label_pagenav}}{{props.label_pagenav}}{{else}}On this page{{/if}}</h3>
+    {{/unless}}
+    
+    {{#if layout.pagenav}}
+    <!-- Mobile dropdown navigation -->
+    {{#if pageNavigation}}
+    <div class="lg:hidden mb-4 relative z-40">
+      <div class="dropdown dropdown-bottom w-full">
+        <div tabindex="0" role="button" class="btn btn-outline w-full justify-between">
+          <span class="text-sm font-semibold uppercase tracking-wide">{{#if props.label_pagenav}}{{props.label_pagenav}}{{else}}On this page{{/if}}</span>
+          <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
         </div>
-        <div style="height: calc(100vh - 180px); overflow-y: scroll;">
-          <ul class="menu menu-sm w-full">
-            {{#each pageNavigation}}
+        <ul tabindex="0" class="dropdown-content menu menu-sm bg-base-100 border border-base-300 rounded-lg shadow-lg w-full mt-1 p-2 z-[50]">
+          {{#each pageNavigation}}
             <li class="whitespace-nowrap overflow-hidden">
               <a href="#{{this.slug}}" class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a>
               {{#if this.children}}
               <ul>
                 {{#each this.children}}
                 <li class="whitespace-nowrap overflow-hidden">
-                  <a href="#{{this.slug}}"
-                    class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a>
+                  <a href="#{{this.slug}}" class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a>
                   {{#if this.children}}
                   <ul>
                     {{#each this.children}}
-                    <li class="whitespace-nowrap overflow-hidden"><a href="#{{this.slug}}"
-                        class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a></li>
+                    <li class="whitespace-nowrap overflow-hidden"><a href="#{{this.slug}}" class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a></li>
                     {{/each}}
                   </ul>
                   {{/if}}
@@ -104,22 +52,64 @@
               </ul>
               {{/if}}
             </li>
-            {{/each}}
-          </ul>
-        </div>
+          {{/each}}
+        </ul>
       </div>
     </div>
-  </div>
-  {{/if}}
-</div>
-{{else}}
-<!-- Default layout without navigation -->
-<div
-  class="prose dark:prose-invert {{#if layout.fullWidth}}!max-w-none{{else}}!max-w-[920px]{{/if}} p-1 lg:m-1 prose-td:[&[align=right]]:text-right prose-td:[&[align=center]]:text-center prose-th:[&[align=right]]:text-right prose-th:[&[align=center]]:text-center">
-  {{{html}}}
-</div>
-{{/if}}
-{{/if}}
-{{/if}}
+    {{/if}}
+
+    <!-- Content with navigation -->
+    <div class="flex flex-col lg:flex-row lg:gap-6 min-w-0">
+      <div class="flex-1 order-2 lg:order-1 min-w-0 overflow-hidden">
+        <div class="prose dark:prose-invert {{#if layout.fullWidth}}!max-w-none{{else}}!max-w-[920px]{{/if}} p-1 lg:m-1 prose-td:[&[align=right]]:text-right prose-td:[&[align=center]]:text-center prose-th:[&[align=right]]:text-right prose-th:[&[align=center]]:text-center">
+          {{{html}}}    
+        </div>
+      </div>
+      
+      {{#if pageNavigation}}
+      <div class="order-1 lg:order-2 lg:w-64 lg:flex-shrink-0 hidden lg:block">
+        <div class="fixed top-20 right-4 w-60 h-[calc(100vh-6rem)] bg-base-100 border-l border-base-300 shadow-sm z-10">
+          <div class="p-4">
+            <div class="pb-3 border-b border-base-300 mb-4">
+              <h3 class="text-sm font-semibold text-base-content mb-0 uppercase tracking-wide">{{#if props.label_pagenav}}{{props.label_pagenav}}{{else}}On this page{{/if}}</h3>
+            </div>
+            <div style="height: calc(100vh - 180px); overflow-y: scroll;">
+              <ul class="menu menu-sm w-full">
+                {{#each pageNavigation}}
+                  <li class="whitespace-nowrap overflow-hidden">
+                    <a href="#{{this.slug}}" class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a>
+                    {{#if this.children}}
+                    <ul>
+                      {{#each this.children}}
+                      <li class="whitespace-nowrap overflow-hidden">
+                        <a href="#{{this.slug}}" class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a>
+                        {{#if this.children}}
+                        <ul>
+                          {{#each this.children}}
+                          <li class="whitespace-nowrap overflow-hidden"><a href="#{{this.slug}}" class="whitespace-nowrap overflow-hidden text-ellipsis block">{{this.title}}</a></li>
+                          {{/each}}
+                        </ul>
+                        {{/if}}
+                      </li>
+                      {{/each}}
+                    </ul>
+                    {{/if}}
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+    {{else}}
+    <!-- Default layout without navigation -->
+    <div class="prose dark:prose-invert {{#if layout.fullWidth}}!max-w-none{{else}}!max-w-[920px]{{/if}} p-1 lg:m-1 prose-td:[&[align=right]]:text-right prose-td:[&[align=center]]:text-center prose-th:[&[align=right]]:text-right prose-th:[&[align=center]]:text-center">
+      {{{html}}}    
+    </div>
+    {{/if}}
+    {{/if}}
+    {{/if}}
 {{/content}}
 {{/extend}}
