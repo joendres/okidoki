@@ -454,7 +454,7 @@
         <div class="hidden lg:flex lg:items-center lg:gap-4">
           <ul class="menu menu-horizontal">
             {{#each navbar}}
-              <li><a href="{{#if this.url}}{{joinUrl baseUrl (transformUrl this.url ../settings)}}{{else}}{{joinUrl baseUrl (transformUrl this.document ../settings)}}{{/if}}">{{this.title}}</a></li>
+              <li><a href="{{#if this.url}}{{joinUrl baseUrl (transformUrl this.url ../settings)}}{{else}}{{joinUrl baseUrl (transformUrl this.document ../settings)}}{{/if}}"{{#if this.target}} target={{this.target}}{{/if}}>{{this.title}}</a></li>
             {{/each}}
           </ul>
           
@@ -537,7 +537,7 @@
           <div class="lg:hidden mb-4">
             <li><a href="{{#if settings.site.friendlyUrl}}{{baseUrl}}{{else}}{{joinUrl baseUrl (transformUrl 'index.html' settings)}}{{/if}}">Home</a></li>
             {{#each navbar}}
-              <li><a href="{{#if this.url}}{{joinUrl baseUrl (transformUrl this.url ../settings)}}{{else}}{{joinUrl baseUrl (transformUrl this.document ../settings)}}{{/if}}">{{this.title}}</a></li>
+              <li><a href="{{#if this.url}}{{joinUrl baseUrl (transformUrl this.url ../settings)}}{{else}}{{joinUrl baseUrl (transformUrl this.document ../settings)}}{{/if}}"{{#if this.target}} target={{this.target}}{{/if}}>{{this.title}}</a></li>
             {{/each}}
             <div class="divider"></div>
           </div>
