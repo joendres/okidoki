@@ -299,7 +299,7 @@ function generateSitemap(docs, settings, sourceDir = 'docs') {
     let siteUrl = '';
     if (settings.site.url) {
         // Use configured site URL
-        siteUrl = settings.site.url.replace(/\/$/, '');
+        siteUrl = (settings.site.url + baseUrl).replace(/\/$/, '');
     } else if (baseUrl.startsWith('http')) {
         // If baseUrl is already absolute, use it
         // Remove index.html if present (e.g., https://okidoki.dev/index.html -> https://okidoki.dev)
