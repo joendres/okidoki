@@ -535,7 +535,7 @@
         <ul class="menu p-4 text-base-content overflow-y-auto h-full">
           <!-- Mobile menu items -->
           <div class="lg:hidden mb-4">
-            <li><a href="{{#if settings.site.friendlyUrl}}{{baseUrl}}{{else}}{{joinUrl baseUrl (transformUrl 'index.html' settings)}}{{/if}}">Home</a></li>
+            <li><a href="{{#if settings.site.friendlyUrl}}{{baseUrl}}{{else}}{{joinUrl baseUrl (transformUrl 'index.html' settings)}}{{/if}}">{{#if props.label_home}}{{props.label_home}}{{else}}Home{{/if}}</a></li>
             {{#each navbar}}
               <li><a href="{{#if this.url}}{{joinUrl baseUrl (transformUrl this.url ../settings)}}{{else}}{{joinUrl baseUrl (transformUrl this.document ../settings)}}{{/if}}"{{#if this.target}} target={{this.target}}{{/if}}>{{this.title}}</a></li>
             {{/each}}

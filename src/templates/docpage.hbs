@@ -12,7 +12,7 @@
     {{#unless layout.hideBreadcrumbs}}
     <div class="breadcrumbs text-sm pl-4 mt-4 lg:mt-4">
       <ul>
-        <li><a href="{{#if settings.site.friendlyUrl}}{{baseUrl}}{{else}}{{joinUrl baseUrl (transformUrl 'index.html' settings)}}{{/if}}">Home</a></li>
+        <li><a href="{{#if settings.site.friendlyUrl}}{{baseUrl}}{{else}}{{joinUrl baseUrl (transformUrl 'index.html' settings)}}{{/if}}">{{#if props.label_home}}{{props.label_home}}{{else}}Home{{/if}}</a></li>
         {{#each breadcrumbs}}
           <li>{{this}}</li>
         {{/each}}
@@ -26,7 +26,7 @@
     <div class="lg:hidden mb-4 relative z-40">
       <div class="dropdown dropdown-bottom w-full">
         <div tabindex="0" role="button" class="btn btn-outline w-full justify-between">
-          <span class="text-sm font-semibold uppercase tracking-wide">On This Page</span>
+          <span class="text-sm font-semibold uppercase tracking-wide">{{#if props.label_pagenav}}{{props.label_pagenav}}{{else}}On this page{{/if}}</span>
           <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
@@ -71,7 +71,7 @@
         <div class="fixed top-20 right-4 w-60 h-[calc(100vh-6rem)] bg-base-100 border-l border-base-300 shadow-sm z-10">
           <div class="p-4">
             <div class="pb-3 border-b border-base-300 mb-4">
-              <h3 class="text-sm font-semibold text-base-content mb-0 uppercase tracking-wide">On This Page</h3>
+              <h3 class="text-sm font-semibold text-base-content mb-0 uppercase tracking-wide">{{#if props.label_pagenav}}{{props.label_pagenav}}{{else}}On this page{{/if}}</h3>
             </div>
             <div style="height: calc(100vh - 180px); overflow-y: scroll;">
               <ul class="menu menu-sm w-full">
