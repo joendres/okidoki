@@ -731,8 +731,6 @@ globals:
 # Navigation configuration
 navigation:
   sidebar: "sidebars.yaml"
-  topNav: true
-  footer: true
 `;
             fs.writeFileSync(configPath, okidokiConfig);
             logger.info(`Created ${configPath} configuration file`);
