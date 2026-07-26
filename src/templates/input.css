@@ -18,6 +18,12 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+  /* AI suggestion from Claude Sonnet 5 */
+  /* Offset anchor-scroll targets so headings aren't hidden behind the sticky navbar */
+  .prose :where(h1, h2, h3, h4, h5, h6) {
+    scroll-margin-top: 5rem;
+  }
+  /* AI suggestion ends here
 }
 
 /* Ensure all commonly used classes are included */
